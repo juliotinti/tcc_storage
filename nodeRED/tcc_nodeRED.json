@@ -1,0 +1,140 @@
+[
+    {
+        "id": "01b0505a415fb65e",
+        "type": "tab",
+        "label": "storageInfo",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4987f4769ea6c02b",
+        "type": "debug",
+        "z": "01b0505a415fb65e",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b4e35bb57c5bce7a",
+        "type": "mqtt in",
+        "z": "01b0505a415fb65e",
+        "name": "",
+        "topic": "storageInfo",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "843e0cdfbb148b49",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 300,
+        "wires": [
+            [
+                "8da7c4d2e65c2bf1",
+                "34b53b18a472f777"
+            ]
+        ]
+    },
+    {
+        "id": "8da7c4d2e65c2bf1",
+        "type": "function",
+        "z": "01b0505a415fb65e",
+        "name": "dataTransform",
+        "func": "var query = `INSERT INTO storagePosition (\n            pos_11, pos_12, pos_13, pos_14, pos_15,\n            pos_21, pos_22, pos_23, pos_24, pos_25,\n            pos_31, pos_32, pos_33, pos_34, pos_35,\n            pos_41, pos_42, pos_43, pos_44, pos_45,\n            pos_51, pos_52, pos_53, pos_54, pos_55) VALUES`;\nvar variables =`(`;\n\nfor (let i = 0; i < 25; i++) {\n\n    variables += msg.payload.split(',')[i];\n    if (i < 24) {\n        variables +=',';\n    }\n}\nvariables += ')';\nmsg.topic = query + variables\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 300,
+        "wires": [
+            [
+                "18e89ef7d873eb00",
+                "4987f4769ea6c02b"
+            ]
+        ]
+    },
+    {
+        "id": "18e89ef7d873eb00",
+        "type": "mysql",
+        "z": "01b0505a415fb65e",
+        "mydb": "1bfd1e707ae383d7",
+        "name": "",
+        "x": 650,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "34b53b18a472f777",
+        "type": "debug",
+        "z": "01b0505a415fb65e",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "843e0cdfbb148b49",
+        "type": "mqtt-broker",
+        "name": "mosquittoBroker",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "1bfd1e707ae383d7",
+        "type": "MySQLdatabase",
+        "name": "Local",
+        "host": "localhost",
+        "port": "3306",
+        "db": "storageInfo",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
