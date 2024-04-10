@@ -20,8 +20,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 660,
-        "y": 220,
+        "x": 540,
+        "y": 140,
         "wires": []
     },
     {
@@ -37,12 +37,13 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 240,
-        "y": 300,
+        "x": 120,
+        "y": 220,
         "wires": [
             [
                 "8da7c4d2e65c2bf1",
-                "34b53b18a472f777"
+                "34b53b18a472f777",
+                "0dd90168ee181f47"
             ]
         ]
     },
@@ -58,8 +59,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
-        "y": 300,
+        "x": 320,
+        "y": 220,
         "wires": [
             [
                 "18e89ef7d873eb00",
@@ -73,8 +74,8 @@
         "z": "01b0505a415fb65e",
         "mydb": "1bfd1e707ae383d7",
         "name": "",
-        "x": 650,
-        "y": 300,
+        "x": 550,
+        "y": 220,
         "wires": [
             []
         ]
@@ -92,8 +93,247 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 460,
-        "y": 220,
+        "x": 340,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "36c31f216d9b9d54",
+        "type": "ui_template",
+        "z": "01b0505a415fb65e",
+        "group": "067d23398ded566a",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Storage 5x5</title>\n    <style>\n        .warehouse {\n            display: flex;\n        }\n\n        .column {\n            grid-template-columns: repeat(5, 1fr);\n        }\n\n        .cell {\n            border: 1px solid black;\n            width: 50px;\n            height: 50px;\n            margin: 0;\n            align-items: center;\n            justify-content: center;\n            position: relative;\n        }\n\n        .slot {\n            width: 8px;\n            height: 8px;\n            position: absolute;\n            border: 1px solid black;\n            bottom: 5px;\n            right: 5px;\n            margin: 4px;\n        }\n    </style>\n</head>\n\n<body>\n\n    <div class=\"warehouse\">\n        <div class=\"column\">\n            <!-- pos_11 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[0]}};\"></span>\n            </div>\n            <!-- pos_21 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[5]}};\"></span>\n            </div>\n            <!-- pos_31 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[10]}};\"></span>\n            </div>\n            <!-- pos_41 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[15]}};\"></span>\n            </div>\n            <!-- pos_51 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[20]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_12 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[1]}};\"></span>\n            </div>\n            <!-- pos_22 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[6]}};\"></span>\n            </div>\n            <!-- pos_32 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[11]}};\"></span>\n            </div>\n            <!-- pos_42 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[16]}};\"></span>\n            </div>\n            <!-- pos_52 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[21]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_13 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[2]}};\"></span>\n            </div>\n            <!-- pos_23 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[7]}};\"></span>\n            </div>\n            <!-- pos_33 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[12]}};\"></span>\n            </div>\n            <!-- pos_43 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[17]}};\"></span>\n            </div>\n            <!-- pos_53 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[22]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_14 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[3]}};\"></span>\n            </div>\n            <!-- pos_24 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[8]}};\"></span>\n            </div>\n            <!-- pos_34 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[13]}};\"></span>\n            </div>\n            <!-- pos_44 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[18]}};\"></span>\n            </div>\n            <!-- pos_54 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[23]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_15 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[4]}};\"></span>\n            </div>\n            <!-- pos_25 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[9]}};\"></span>\n            </div>\n            <!-- pos_35 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[14]}};\"></span>\n            </div>\n            <!-- pos_45 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[19]}};\"></span>\n            </div>\n            <!-- pos_55 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[24]}};\"></span>\n            </div>\n        </div>\n\n    </div>\n\n</body>\n\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 580,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1b9d4e3d08b449aa",
+        "type": "ui_template",
+        "z": "01b0505a415fb65e",
+        "group": "067d23398ded566a",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Storage 5x5</title>\n  <style>\n    .warehouse {\n      display: flex;\n    }\n\n    .column {\n      grid-template-columns: repeat(5, 1fr);\n    }\n\n    .cell {\n      border: 1px solid black;\n      width: 50px;\n      height: 50px;\n      margin: 0;\n      align-items: center;\n      justify-content: center;\n      position: relative;\n    }\n\n    .usage {\n      position: absolute;\n      bottom: 5px;\n      right: 5px;\n      font-size: 0.7em;\n      margin: 4px;\n    }\n  </style>\n</head>\n\n<body>\n\n  <div class=\"warehouse\">\n    <div class=\"column\">\n      <!-- pos_11 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_11}}%</span>\n      </div>\n      <!-- pos_21 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_21}}%</span>\n      </div>\n      <!-- pos_31 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_31}}%</span>\n      </div>\n      <!-- pos_41 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_41}}%</span>\n      </div>\n      <!-- pos_51 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_51}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_12 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_12}}%</span>\n      </div>\n      <!-- pos_22 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_22}}%</span>\n      </div>\n      <!-- pos_32 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_32}}%</span>\n      </div>\n      <!-- pos_42 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_42}}%</span>\n      </div>\n      <!-- pos_52 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_52}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_13 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_13}}%</span>\n      </div>\n      <!-- pos_23 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_23}}%</span>\n      </div>\n      <!-- pos_33 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_33}}%</span>\n      </div>\n      <!-- pos_43 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_43}}%</span>\n      </div>\n      <!-- pos_53 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_53}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_14 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_14}}%</span>\n      </div>\n      <!-- pos_24 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_24}}%</span>\n      </div>\n      <!-- pos_34 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_34}}%</span>\n      </div>\n      <!-- pos_44 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_44}}%</span>\n      </div>\n      <!-- pos_54 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_54}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_15 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_15}}%</span>\n      </div>\n      <!-- pos_25 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_25}}%</span>\n      </div>\n      <!-- pos_35 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_35}}%</span>\n      </div>\n      <!-- pos_45 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_45}}%</span>\n      </div>\n      <!-- pos_55 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_55}}%</span>\n      </div>\n    </div>\n\n  </div>\n\n</body>\n\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1040,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0dd90168ee181f47",
+        "type": "function",
+        "z": "01b0505a415fb65e",
+        "name": "currentUsage",
+        "func": "let slots = msg.payload.split(',');\nmsg.color = []; \n\nfor (let i = 0; i < 25; i++) {\n    if (slots[i] == '1'){\n        msg.color[i] = \"green\"\n    }\n    else{\n        msg.color[i] = \"red\"\n    }\n\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 320,
+        "wires": [
+            [
+                "36c31f216d9b9d54",
+                "af50b67fbcd549d5"
+            ]
+        ]
+    },
+    {
+        "id": "af50b67fbcd549d5",
+        "type": "debug",
+        "z": "01b0505a415fb65e",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "6566b03f4a3abac6",
+        "type": "mysql",
+        "z": "01b0505a415fb65e",
+        "mydb": "1bfd1e707ae383d7",
+        "name": "usagePercent",
+        "x": 580,
+        "y": 460,
+        "wires": [
+            [
+                "4dd6496ed5631b9e",
+                "86667aa5c91cac88"
+            ]
+        ]
+    },
+    {
+        "id": "a0c06628f5b702e4",
+        "type": "function",
+        "z": "01b0505a415fb65e",
+        "name": "usagePercentQuery",
+        "func": "var query = `SELECT\n    COUNT(*) AS total_records,\n    ROUND(SUM(pos_11) / COUNT(*) * 100, 2) AS percent_pos_11,\n    ROUND(SUM(pos_12) / COUNT(*) * 100, 2) AS percent_pos_12,\n    ROUND(SUM(pos_13) / COUNT(*) * 100, 2) AS percent_pos_13,\n    ROUND(SUM(pos_14) / COUNT(*) * 100, 2) AS percent_pos_14,\n    ROUND(SUM(pos_15) / COUNT(*) * 100, 2) AS percent_pos_15,\n    ROUND(SUM(pos_21) / COUNT(*) * 100, 2) AS percent_pos_21,\n    ROUND(SUM(pos_22) / COUNT(*) * 100, 2) AS percent_pos_22,\n    ROUND(SUM(pos_23) / COUNT(*) * 100, 2) AS percent_pos_23,\n    ROUND(SUM(pos_24) / COUNT(*) * 100, 2) AS percent_pos_24,\n    ROUND(SUM(pos_25) / COUNT(*) * 100, 2) AS percent_pos_25,\n    ROUND(SUM(pos_31) / COUNT(*) * 100, 2) AS percent_pos_31,\n    ROUND(SUM(pos_32) / COUNT(*) * 100, 2) AS percent_pos_32,\n    ROUND(SUM(pos_33) / COUNT(*) * 100, 2) AS percent_pos_33,\n    ROUND(SUM(pos_34) / COUNT(*) * 100, 2) AS percent_pos_34,\n    ROUND(SUM(pos_35) / COUNT(*) * 100, 2) AS percent_pos_35,\n    ROUND(SUM(pos_41) / COUNT(*) * 100, 2) AS percent_pos_41,\n    ROUND(SUM(pos_42) / COUNT(*) * 100, 2) AS percent_pos_42,\n    ROUND(SUM(pos_43) / COUNT(*) * 100, 2) AS percent_pos_43,\n    ROUND(SUM(pos_44) / COUNT(*) * 100, 2) AS percent_pos_44,\n    ROUND(SUM(pos_45) / COUNT(*) * 100, 2) AS percent_pos_45,\n    ROUND(SUM(pos_51) / COUNT(*) * 100, 2) AS percent_pos_51,\n    ROUND(SUM(pos_52) / COUNT(*) * 100, 2) AS percent_pos_52,\n    ROUND(SUM(pos_53) / COUNT(*) * 100, 2) AS percent_pos_53,\n    ROUND(SUM(pos_54) / COUNT(*) * 100, 2) AS percent_pos_54,\n    ROUND(SUM(pos_55) / COUNT(*) * 100, 2) AS percent_pos_55\nFROM storagePosition;`;\n\nmsg.topic = query;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 460,
+        "wires": [
+            [
+                "6566b03f4a3abac6",
+                "b92b44b50958f995"
+            ]
+        ]
+    },
+    {
+        "id": "4dd6496ed5631b9e",
+        "type": "function",
+        "z": "01b0505a415fb65e",
+        "name": "usagePercentTransform",
+        "func": "msg.totalRecords = msg.payload.total_records;\nmsg.usagePercentage = []; \n\nfor (let i = 11; i <= 55; i++)\n {\n    let key = `percent_pos_${i}`;\n    if (msg.payload.hasOwnProperty(key)) \n    {\n        msg.usagePercentage.push({\n            position: key,\n            percentage: msg.payload[key]\n        });\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 460,
+        "wires": [
+            [
+                "1b9d4e3d08b449aa",
+                "472195df6dd275fc",
+                "dcb956ce95f835b0"
+            ]
+        ]
+    },
+    {
+        "id": "b92b44b50958f995",
+        "type": "debug",
+        "z": "01b0505a415fb65e",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "86667aa5c91cac88",
+        "type": "debug",
+        "z": "01b0505a415fb65e",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "472195df6dd275fc",
+        "type": "debug",
+        "z": "01b0505a415fb65e",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "2b07dfb54137fd72",
+        "type": "inject",
+        "z": "01b0505a415fb65e",
+        "name": "every 5 seconds",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 460,
+        "wires": [
+            [
+                "a0c06628f5b702e4"
+            ]
+        ]
+    },
+    {
+        "id": "dcb956ce95f835b0",
+        "type": "ui_text",
+        "z": "01b0505a415fb65e",
+        "group": "067d23398ded566a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "totalRecords",
+        "label": "Total Records:",
+        "format": "{{msg.payload[0].total_records}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1050,
+        "y": 500,
         "wires": []
     },
     {
@@ -130,11 +370,31 @@
     {
         "id": "1bfd1e707ae383d7",
         "type": "MySQLdatabase",
-        "name": "Local",
+        "name": "storageLocal",
         "host": "localhost",
         "port": "3306",
         "db": "storageInfo",
         "tz": "",
         "charset": "UTF8"
+    },
+    {
+        "id": "067d23398ded566a",
+        "type": "ui_group",
+        "name": "Total records",
+        "tab": "40a16db2d70a6c64",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "40a16db2d70a6c64",
+        "type": "ui_tab",
+        "name": "Storage Informations",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
     }
 ]
