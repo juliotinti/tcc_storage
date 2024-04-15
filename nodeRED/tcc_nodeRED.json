@@ -20,8 +20,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 540,
-        "y": 140,
+        "x": 880,
+        "y": 260,
         "wires": []
     },
     {
@@ -37,8 +37,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 120,
-        "y": 220,
+        "x": 460,
+        "y": 340,
         "wires": [
             [
                 "8da7c4d2e65c2bf1",
@@ -59,8 +59,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 220,
+        "x": 660,
+        "y": 340,
         "wires": [
             [
                 "18e89ef7d873eb00",
@@ -74,8 +74,8 @@
         "z": "01b0505a415fb65e",
         "mydb": "1bfd1e707ae383d7",
         "name": "",
-        "x": 550,
-        "y": 220,
+        "x": 890,
+        "y": 340,
         "wires": [
             []
         ]
@@ -93,8 +93,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 340,
-        "y": 140,
+        "x": 680,
+        "y": 260,
         "wires": []
     },
     {
@@ -106,14 +106,14 @@
         "order": 0,
         "width": 0,
         "height": 0,
-        "format": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Storage 5x5</title>\n    <style>\n        .warehouse {\n            display: flex;\n        }\n\n        .column {\n            grid-template-columns: repeat(5, 1fr);\n        }\n\n        .cell {\n            border: 1px solid black;\n            width: 50px;\n            height: 50px;\n            margin: 0;\n            align-items: center;\n            justify-content: center;\n            position: relative;\n        }\n\n        .slot {\n            width: 8px;\n            height: 8px;\n            position: absolute;\n            border: 1px solid black;\n            bottom: 5px;\n            right: 5px;\n            margin: 4px;\n        }\n    </style>\n</head>\n\n<body>\n\n    <div class=\"warehouse\">\n        <div class=\"column\">\n            <!-- pos_11 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[0]}};\"></span>\n            </div>\n            <!-- pos_21 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[5]}};\"></span>\n            </div>\n            <!-- pos_31 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[10]}};\"></span>\n            </div>\n            <!-- pos_41 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[15]}};\"></span>\n            </div>\n            <!-- pos_51 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[20]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_12 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[1]}};\"></span>\n            </div>\n            <!-- pos_22 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[6]}};\"></span>\n            </div>\n            <!-- pos_32 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[11]}};\"></span>\n            </div>\n            <!-- pos_42 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[16]}};\"></span>\n            </div>\n            <!-- pos_52 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[21]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_13 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[2]}};\"></span>\n            </div>\n            <!-- pos_23 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[7]}};\"></span>\n            </div>\n            <!-- pos_33 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[12]}};\"></span>\n            </div>\n            <!-- pos_43 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[17]}};\"></span>\n            </div>\n            <!-- pos_53 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[22]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_14 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[3]}};\"></span>\n            </div>\n            <!-- pos_24 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[8]}};\"></span>\n            </div>\n            <!-- pos_34 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[13]}};\"></span>\n            </div>\n            <!-- pos_44 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[18]}};\"></span>\n            </div>\n            <!-- pos_54 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[23]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_15 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[4]}};\"></span>\n            </div>\n            <!-- pos_25 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[9]}};\"></span>\n            </div>\n            <!-- pos_35 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[14]}};\"></span>\n            </div>\n            <!-- pos_45 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[19]}};\"></span>\n            </div>\n            <!-- pos_55 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[24]}};\"></span>\n            </div>\n        </div>\n\n    </div>\n\n</body>\n\n</html>",
+        "format": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Storage 5x5</title>\n    <style>\n        .warehouse {\n            display: flex;\n            height: 300px;\n            align-items: center;\n            justify-content: center;\n            position: relative;\n        }\n\n        .column {\n            grid-template-columns: repeat(5, 1fr);\n        }\n\n        .cell {\n            border: 1px solid black;\n            width: 50px;\n            height: 50px;\n            margin: 0;\n            align-items: center;\n            justify-content: center;\n            position: relative;\n        }\n\n        .slot {\n            width: 8px;\n            height: 8px;\n            position: absolute;\n            border: 1px solid black;\n            bottom: 5px;\n            right: 5px;\n            margin: 4px;\n        }\n    </style>\n</head>\n\n<body>\n\n    <div class=\"warehouse\">\n        <div class=\"column\">\n            <!-- pos_11 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[0]}};\"></span>\n            </div>\n            <!-- pos_21 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[5]}};\"></span>\n            </div>\n            <!-- pos_31 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[10]}};\"></span>\n            </div>\n            <!-- pos_41 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[15]}};\"></span>\n            </div>\n            <!-- pos_51 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[20]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_12 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[1]}};\"></span>\n            </div>\n            <!-- pos_22 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[6]}};\"></span>\n            </div>\n            <!-- pos_32 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[11]}};\"></span>\n            </div>\n            <!-- pos_42 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[16]}};\"></span>\n            </div>\n            <!-- pos_52 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[21]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_13 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[2]}};\"></span>\n            </div>\n            <!-- pos_23 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[7]}};\"></span>\n            </div>\n            <!-- pos_33 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[12]}};\"></span>\n            </div>\n            <!-- pos_43 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[17]}};\"></span>\n            </div>\n            <!-- pos_53 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[22]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_14 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[3]}};\"></span>\n            </div>\n            <!-- pos_24 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[8]}};\"></span>\n            </div>\n            <!-- pos_34 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[13]}};\"></span>\n            </div>\n            <!-- pos_44 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[18]}};\"></span>\n            </div>\n            <!-- pos_54 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[23]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_15 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[4]}};\"></span>\n            </div>\n            <!-- pos_25 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[9]}};\"></span>\n            </div>\n            <!-- pos_35 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[14]}};\"></span>\n            </div>\n            <!-- pos_45 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[19]}};\"></span>\n            </div>\n            <!-- pos_55 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[24]}};\"></span>\n            </div>\n        </div>\n\n    </div>\n\n</body>\n\n</html>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 580,
-        "y": 360,
+        "x": 920,
+        "y": 480,
         "wires": [
             []
         ]
@@ -122,19 +122,19 @@
         "id": "1b9d4e3d08b449aa",
         "type": "ui_template",
         "z": "01b0505a415fb65e",
-        "group": "067d23398ded566a",
+        "group": "79664ad5b5643537",
         "name": "",
         "order": 0,
         "width": 0,
         "height": 0,
-        "format": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Storage 5x5</title>\n  <style>\n    .warehouse {\n      display: flex;\n    }\n\n    .column {\n      grid-template-columns: repeat(5, 1fr);\n    }\n\n    .cell {\n      border: 1px solid black;\n      width: 50px;\n      height: 50px;\n      margin: 0;\n      align-items: center;\n      justify-content: center;\n      position: relative;\n    }\n\n    .usage {\n      position: absolute;\n      bottom: 5px;\n      right: 5px;\n      font-size: 0.7em;\n      margin: 4px;\n    }\n  </style>\n</head>\n\n<body>\n\n  <div class=\"warehouse\">\n    <div class=\"column\">\n      <!-- pos_11 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_11}}%</span>\n      </div>\n      <!-- pos_21 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_21}}%</span>\n      </div>\n      <!-- pos_31 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_31}}%</span>\n      </div>\n      <!-- pos_41 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_41}}%</span>\n      </div>\n      <!-- pos_51 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_51}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_12 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_12}}%</span>\n      </div>\n      <!-- pos_22 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_22}}%</span>\n      </div>\n      <!-- pos_32 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_32}}%</span>\n      </div>\n      <!-- pos_42 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_42}}%</span>\n      </div>\n      <!-- pos_52 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_52}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_13 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_13}}%</span>\n      </div>\n      <!-- pos_23 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_23}}%</span>\n      </div>\n      <!-- pos_33 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_33}}%</span>\n      </div>\n      <!-- pos_43 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_43}}%</span>\n      </div>\n      <!-- pos_53 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_53}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_14 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_14}}%</span>\n      </div>\n      <!-- pos_24 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_24}}%</span>\n      </div>\n      <!-- pos_34 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_34}}%</span>\n      </div>\n      <!-- pos_44 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_44}}%</span>\n      </div>\n      <!-- pos_54 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_54}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_15 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_15}}%</span>\n      </div>\n      <!-- pos_25 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_25}}%</span>\n      </div>\n      <!-- pos_35 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_35}}%</span>\n      </div>\n      <!-- pos_45 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_45}}%</span>\n      </div>\n      <!-- pos_55 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_55}}%</span>\n      </div>\n    </div>\n\n  </div>\n\n</body>\n\n</html>",
+        "format": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Storage 5x5</title>\n  <style>\n    .warehouse {\n      display: flex;\n      height: 300px;\n      align-items: center;\n      justify-content: center;\n      position: relative;\n    }\n\n    .column {\n      grid-template-columns: repeat(5, 1fr);\n    }\n\n    .cell {\n      border: 1px solid black;\n      width: 50px;\n      height: 50px;\n      margin: 0;\n      align-items: center;\n      justify-content: center;\n      position: relative;\n    }\n\n    .usage {\n      position: absolute;\n      bottom: 5px;\n      right: 5px;\n      font-size: 0.7em;\n      margin: 4px;\n    }\n  </style>\n</head>\n\n<body>\n\n  <div class=\"warehouse\">\n    <div class=\"column\">\n      <!-- pos_11 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_11}}%</span>\n      </div>\n      <!-- pos_21 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_21}}%</span>\n      </div>\n      <!-- pos_31 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_31}}%</span>\n      </div>\n      <!-- pos_41 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_41}}%</span>\n      </div>\n      <!-- pos_51 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_51}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_12 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_12}}%</span>\n      </div>\n      <!-- pos_22 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_22}}%</span>\n      </div>\n      <!-- pos_32 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_32}}%</span>\n      </div>\n      <!-- pos_42 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_42}}%</span>\n      </div>\n      <!-- pos_52 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_52}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_13 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_13}}%</span>\n      </div>\n      <!-- pos_23 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_23}}%</span>\n      </div>\n      <!-- pos_33 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_33}}%</span>\n      </div>\n      <!-- pos_43 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_43}}%</span>\n      </div>\n      <!-- pos_53 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_53}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_14 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_14}}%</span>\n      </div>\n      <!-- pos_24 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_24}}%</span>\n      </div>\n      <!-- pos_34 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_34}}%</span>\n      </div>\n      <!-- pos_44 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_44}}%</span>\n      </div>\n      <!-- pos_54 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_54}}%</span>\n      </div>\n    </div>\n    <div class=\"column\">\n      <!-- pos_15 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_15}}%</span>\n      </div>\n      <!-- pos_25 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_25}}%</span>\n      </div>\n      <!-- pos_35 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_35}}%</span>\n      </div>\n      <!-- pos_45 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_45}}%</span>\n      </div>\n      <!-- pos_55 -->\n      <div class=\"cell\">\n        <span class=\"usage\">{{msg.payload[0].percent_pos_55}}%</span>\n      </div>\n    </div>\n\n  </div>\n\n</body>\n\n</html>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1040,
-        "y": 460,
+        "x": 1380,
+        "y": 580,
         "wires": [
             []
         ]
@@ -151,8 +151,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 340,
-        "y": 320,
+        "x": 680,
+        "y": 440,
         "wires": [
             [
                 "36c31f216d9b9d54",
@@ -173,8 +173,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 580,
-        "y": 320,
+        "x": 920,
+        "y": 440,
         "wires": []
     },
     {
@@ -183,8 +183,8 @@
         "z": "01b0505a415fb65e",
         "mydb": "1bfd1e707ae383d7",
         "name": "usagePercent",
-        "x": 580,
-        "y": 460,
+        "x": 920,
+        "y": 580,
         "wires": [
             [
                 "4dd6496ed5631b9e",
@@ -204,8 +204,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
-        "y": 460,
+        "x": 700,
+        "y": 580,
         "wires": [
             [
                 "6566b03f4a3abac6",
@@ -225,8 +225,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 810,
-        "y": 460,
+        "x": 1150,
+        "y": 580,
         "wires": [
             [
                 "1b9d4e3d08b449aa",
@@ -248,8 +248,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 560,
-        "y": 420,
+        "x": 900,
+        "y": 540,
         "wires": []
     },
     {
@@ -265,8 +265,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 780,
-        "y": 420,
+        "x": 1120,
+        "y": 540,
         "wires": []
     },
     {
@@ -282,8 +282,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1040,
-        "y": 420,
+        "x": 1380,
+        "y": 540,
         "wires": []
     },
     {
@@ -307,8 +307,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
-        "y": 460,
+        "x": 470,
+        "y": 580,
         "wires": [
             [
                 "a0c06628f5b702e4"
@@ -319,7 +319,7 @@
         "id": "dcb956ce95f835b0",
         "type": "ui_text",
         "z": "01b0505a415fb65e",
-        "group": "067d23398ded566a",
+        "group": "df4eedea9db0b94b",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -332,8 +332,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1050,
-        "y": 500,
+        "x": 1390,
+        "y": 620,
         "wires": []
     },
     {
@@ -380,9 +380,31 @@
     {
         "id": "067d23398ded566a",
         "type": "ui_group",
-        "name": "Total records",
+        "name": "Current Position",
         "tab": "40a16db2d70a6c64",
         "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "79664ad5b5643537",
+        "type": "ui_group",
+        "name": "Usage Percent",
+        "tab": "40a16db2d70a6c64",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "df4eedea9db0b94b",
+        "type": "ui_group",
+        "name": "Total Records",
+        "tab": "40a16db2d70a6c64",
+        "order": 2,
         "disp": true,
         "width": "6",
         "collapse": false,
