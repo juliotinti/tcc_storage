@@ -20,8 +20,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 880,
-        "y": 260,
+        "x": 700,
+        "y": 180,
         "wires": []
     },
     {
@@ -37,8 +37,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 460,
-        "y": 340,
+        "x": 300,
+        "y": 240,
         "wires": [
             [
                 "8da7c4d2e65c2bf1",
@@ -59,8 +59,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 660,
-        "y": 340,
+        "x": 520,
+        "y": 220,
         "wires": [
             [
                 "18e89ef7d873eb00",
@@ -74,8 +74,8 @@
         "z": "01b0505a415fb65e",
         "mydb": "1bfd1e707ae383d7",
         "name": "",
-        "x": 890,
-        "y": 340,
+        "x": 710,
+        "y": 220,
         "wires": [
             []
         ]
@@ -93,30 +93,9 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 260,
+        "x": 500,
+        "y": 180,
         "wires": []
-    },
-    {
-        "id": "36c31f216d9b9d54",
-        "type": "ui_template",
-        "z": "01b0505a415fb65e",
-        "group": "067d23398ded566a",
-        "name": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "format": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Storage 5x5</title>\n    <style>\n        .warehouse {\n            display: flex;\n            height: 300px;\n            align-items: center;\n            justify-content: center;\n            position: relative;\n        }\n\n        .column {\n            grid-template-columns: repeat(5, 1fr);\n        }\n\n        .cell {\n            border: 1px solid black;\n            width: 50px;\n            height: 50px;\n            margin: 0;\n            align-items: center;\n            justify-content: center;\n            position: relative;\n        }\n\n        .slot {\n            width: 8px;\n            height: 8px;\n            position: absolute;\n            border: 1px solid black;\n            bottom: 5px;\n            right: 5px;\n            margin: 4px;\n        }\n    </style>\n</head>\n\n<body>\n\n    <div class=\"warehouse\">\n        <div class=\"column\">\n            <!-- pos_11 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[0]}};\"></span>\n            </div>\n            <!-- pos_21 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[5]}};\"></span>\n            </div>\n            <!-- pos_31 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[10]}};\"></span>\n            </div>\n            <!-- pos_41 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[15]}};\"></span>\n            </div>\n            <!-- pos_51 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[20]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_12 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[1]}};\"></span>\n            </div>\n            <!-- pos_22 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[6]}};\"></span>\n            </div>\n            <!-- pos_32 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[11]}};\"></span>\n            </div>\n            <!-- pos_42 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[16]}};\"></span>\n            </div>\n            <!-- pos_52 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[21]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_13 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[2]}};\"></span>\n            </div>\n            <!-- pos_23 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[7]}};\"></span>\n            </div>\n            <!-- pos_33 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[12]}};\"></span>\n            </div>\n            <!-- pos_43 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[17]}};\"></span>\n            </div>\n            <!-- pos_53 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[22]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_14 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[3]}};\"></span>\n            </div>\n            <!-- pos_24 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[8]}};\"></span>\n            </div>\n            <!-- pos_34 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[13]}};\"></span>\n            </div>\n            <!-- pos_44 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[18]}};\"></span>\n            </div>\n            <!-- pos_54 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[23]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_15 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[4]}};\"></span>\n            </div>\n            <!-- pos_25 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[9]}};\"></span>\n            </div>\n            <!-- pos_35 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[14]}};\"></span>\n            </div>\n            <!-- pos_45 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[19]}};\"></span>\n            </div>\n            <!-- pos_55 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.color[24]}};\"></span>\n            </div>\n        </div>\n\n    </div>\n\n</body>\n\n</html>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 920,
-        "y": 480,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "1b9d4e3d08b449aa",
@@ -133,49 +112,11 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1380,
-        "y": 580,
+        "x": 1320,
+        "y": 420,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "0dd90168ee181f47",
-        "type": "function",
-        "z": "01b0505a415fb65e",
-        "name": "currentUsage",
-        "func": "let slots = msg.payload.split(',');\nmsg.color = []; \n\nfor (let i = 0; i < 25; i++) {\n    if (slots[i] == '1'){\n        msg.color[i] = \"green\"\n    }\n    else{\n        msg.color[i] = \"red\"\n    }\n\n}\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 680,
-        "y": 440,
-        "wires": [
-            [
-                "36c31f216d9b9d54",
-                "af50b67fbcd549d5"
-            ]
-        ]
-    },
-    {
-        "id": "af50b67fbcd549d5",
-        "type": "debug",
-        "z": "01b0505a415fb65e",
-        "name": "debug 3",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 920,
-        "y": 440,
-        "wires": []
     },
     {
         "id": "6566b03f4a3abac6",
@@ -183,8 +124,8 @@
         "z": "01b0505a415fb65e",
         "mydb": "1bfd1e707ae383d7",
         "name": "usagePercent",
-        "x": 920,
-        "y": 580,
+        "x": 860,
+        "y": 420,
         "wires": [
             [
                 "4dd6496ed5631b9e",
@@ -204,8 +145,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 700,
-        "y": 580,
+        "x": 600,
+        "y": 420,
         "wires": [
             [
                 "6566b03f4a3abac6",
@@ -225,8 +166,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1150,
-        "y": 580,
+        "x": 1090,
+        "y": 420,
         "wires": [
             [
                 "1b9d4e3d08b449aa",
@@ -239,6 +180,23 @@
         "id": "b92b44b50958f995",
         "type": "debug",
         "z": "01b0505a415fb65e",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "86667aa5c91cac88",
+        "type": "debug",
+        "z": "01b0505a415fb65e",
         "name": "debug 4",
         "active": false,
         "tosidebar": true,
@@ -248,12 +206,12 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 900,
-        "y": 540,
+        "x": 1060,
+        "y": 380,
         "wires": []
     },
     {
-        "id": "86667aa5c91cac88",
+        "id": "472195df6dd275fc",
         "type": "debug",
         "z": "01b0505a415fb65e",
         "name": "debug 5",
@@ -265,25 +223,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1120,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "472195df6dd275fc",
-        "type": "debug",
-        "z": "01b0505a415fb65e",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1380,
-        "y": 540,
+        "x": 1320,
+        "y": 380,
         "wires": []
     },
     {
@@ -307,8 +248,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 470,
-        "y": 580,
+        "x": 330,
+        "y": 420,
         "wires": [
             [
                 "a0c06628f5b702e4"
@@ -332,8 +273,67 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1390,
-        "y": 620,
+        "x": 1330,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "36c31f216d9b9d54",
+        "type": "ui_template",
+        "z": "01b0505a415fb65e",
+        "group": "067d23398ded566a",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Storage 5x5</title>\n    <style>\n        .warehouse {\n            display: flex;\n            height: 300px;\n            align-items: center;\n            justify-content: center;\n            position: relative;\n        }\n\n        .column {\n            grid-template-columns: repeat(5, 1fr);\n        }\n\n        .cell {\n            border: 1px solid black;\n            width: 50px;\n            height: 50px;\n            margin: 0;\n            align-items: center;\n            justify-content: center;\n            position: relative;\n        }\n\n        .slot {\n            width: 8px;\n            height: 8px;\n            position: absolute;\n            border: 1px solid black;\n            bottom: 5px;\n            right: 5px;\n            margin: 4px;\n        }\n    </style>\n</head>\n\n<body>\n\n    <div class=\"warehouse\">\n        <div class=\"column\">\n            <!-- pos_11 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[0]}};\"></span>\n            </div>\n            <!-- pos_21 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[5]}};\"></span>\n            </div>\n            <!-- pos_31 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[10]}};\"></span>\n            </div>\n            <!-- pos_41 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[15]}};\"></span>\n            </div>\n            <!-- pos_51 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[20]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_12 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[1]}};\"></span>\n            </div>\n            <!-- pos_22 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[6]}};\"></span>\n            </div>\n            <!-- pos_32 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[11]}};\"></span>\n            </div>\n            <!-- pos_42 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[16]}};\"></span>\n            </div>\n            <!-- pos_52 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[21]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_13 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[2]}};\"></span>\n            </div>\n            <!-- pos_23 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[7]}};\"></span>\n            </div>\n            <!-- pos_33 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[12]}};\"></span>\n            </div>\n            <!-- pos_43 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[17]}};\"></span>\n            </div>\n            <!-- pos_53 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[22]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_14 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[3]}};\"></span>\n            </div>\n            <!-- pos_24 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[8]}};\"></span>\n            </div>\n            <!-- pos_34 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[13]}};\"></span>\n            </div>\n            <!-- pos_44 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[18]}};\"></span>\n            </div>\n            <!-- pos_54 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[23]}};\"></span>\n            </div>\n        </div>\n        <div class=\"column\">\n            <!-- pos_15 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[4]}};\"></span>\n            </div>\n            <!-- pos_25 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[9]}};\"></span>\n            </div>\n            <!-- pos_35 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[14]}};\"></span>\n            </div>\n            <!-- pos_45 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[19]}};\"></span>\n            </div>\n            <!-- pos_55 -->\n            <div class=\"cell\">\n                <span class=\"slot\" style=\"background-color: {{msg.payload[24]}};\"></span>\n            </div>\n        </div>\n\n    </div>\n\n</body>\n\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 720,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0dd90168ee181f47",
+        "type": "function",
+        "z": "01b0505a415fb65e",
+        "name": "currentUsage",
+        "func": "let slots = msg.payload.split(',').map(item => item.trim());\nlet color = [];\n\nfor (let i = 0; i < 25; i++) {\n    if (slots[i] == '1') {\n        color[i] = \"green\"\n    }\n    else {\n        color[i] = \"red\"\n    }\n}\nreturn { payload: color };",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 280,
+        "wires": [
+            [
+                "36c31f216d9b9d54",
+                "af50b67fbcd549d5"
+            ]
+        ]
+    },
+    {
+        "id": "af50b67fbcd549d5",
+        "type": "debug",
+        "z": "01b0505a415fb65e",
+        "name": "debug 6",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 280,
         "wires": []
     },
     {
@@ -378,17 +378,6 @@
         "charset": "UTF8"
     },
     {
-        "id": "067d23398ded566a",
-        "type": "ui_group",
-        "name": "Current Position",
-        "tab": "40a16db2d70a6c64",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "79664ad5b5643537",
         "type": "ui_group",
         "name": "Usage Percent",
@@ -405,6 +394,17 @@
         "name": "Total Records",
         "tab": "40a16db2d70a6c64",
         "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "067d23398ded566a",
+        "type": "ui_group",
+        "name": "Current Position",
+        "tab": "40a16db2d70a6c64",
+        "order": 1,
         "disp": true,
         "width": "6",
         "collapse": false,
