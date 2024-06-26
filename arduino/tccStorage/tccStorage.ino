@@ -18,12 +18,14 @@ int state[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 const int switchNum = sizeof(switchsPin) / sizeof(switchsPin[0]);
 
 
-void setup() {
+void setup() 
+{
   Serial.begin(115200);
 
   // sensors setup
   // Configures the switch pins as inputs and enables the internal pull-up resistors
-  for (int i = 0; i < switchNum; i++) {
+  for (int i = 0; i < switchNum; i++) 
+  {
     pinMode(switchsPin[i], INPUT_PULLUP);
   }
 
@@ -34,22 +36,28 @@ void setup() {
   client.setServer(mqtt_server, 1883);
 }
 
-void setup_ethernet() {
+void setup_ethernet() 
+{
   Serial.println("Begin Ethernet");
 
   Ethernet.init(10);
-  if (Ethernet.begin(mac)) {  // Dynamic IP setup
+  if (Ethernet.begin(mac)) 
+  {  // Dynamic IP setup
     Serial.println("DHCP OK!");
-  } else {
+  } else 
+  {
     Serial.println("Failed to configure Ethernet using DHCP");
     // Check for Ethernet hardware present
-    if (Ethernet.hardwareStatus() == EthernetNoHardware) {
+    if (Ethernet.hardwareStatus() == EthernetNoHardware) 
+    {
       Serial.println("Ethernet shield was not found.  Sorry, can't run without hardware. :(");
-      while (true) {
+      while (true) 
+      {
         delay(1);  // do nothing, no point running without Ethernet hardware
       }
     }
-    if (Ethernet.linkStatus() == LinkOFF) {
+    if (Ethernet.linkStatus() == LinkOFF) 
+    {
       Serial.println("Ethernet cable is not connected.");
     }
   }
@@ -70,11 +78,14 @@ void setup_ethernet() {
 }
 
 // function to reconnect to the topic
-void reconnect() {
-  while (!client.connected()) {
+void reconnect() 
+{
+  while (!client.connected()) 
+  {
     Serial.print("Attempting MQTT connection...");
 
-    if (client.connect("ArduinoClient")) {
+    if (client.connect("ArduinoClient")) 
+    {
       Serial.println("connected");
     } else {
       Serial.print("failed, rc=");
@@ -85,44 +96,54 @@ void reconnect() {
   }
 }
 
-String readStorageUsage(int* sensorState, int switchNum) {
+String readStorageUsage(int* sensorState, int switchNum) 
+{
   // mocked storageResponse
   String result = "";
-  for (int i = 0; i < switchNum; i++) {
+  for (int i = 0; i < switchNum; i++) 
+  {
     result += String(sensors[i]);
-    if (i < switchNum - 1) {
+    if (i < switchNum - 1) 
+    {
       result += ", ";
     }
   }
 
   // REMOVE WHEN PUT ALL SENSORS
   result += ", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0";
-
   return result;
 }
 
-void loop() {
+void loop() 
+{
 
-  if (!client.connected()) {
+  if (!client.connected()) 
+  {
     reconnect();
   }
 
-  for (int i = 0; i < switchNum; i++) {
-    // If it is pressed the state will be LOW
-    if (digitalRead(switchsPin[i]) == LOW) {
-      state[i] = 1;
-    } else {
-      state[i] = 0;
+  bool stateChanged = false;
+  for (int i = 0; i < switchNum; i++) 
+  {
+    int currentState = digitalRead(switchsPin[i]) == LOW ? 1 : 0;
+    if (currentState != state[i]) 
+    {
+      stateChanged = true;
     }
+    state[i] = currentState;
   }
 
-  String result = readStorageUsage(state, switchNum);
-  Serial.print("Message that will go to the topic [ ");
-  Serial.print(mqttTopic);
-  Serial.print("]: ");
-  Serial.println(result);
+  if (stateChanged) 
+  {
+    String result = readStorageUsage(state, switchNum);
+    Serial.print("Message that will go to the topic [ ");
+    Serial.print(mqttTopic);
+    Serial.print("]: ");
+    Serial.println(result);
 
-  client.publish(mqttTopic, result.c_str());
-  Serial.println("sent");
-  delay(3000);
+    client.publish(mqttTopic, result.c_str());
+    Serial.println("sent");
+  }
+
+  delay(1500);
 }
