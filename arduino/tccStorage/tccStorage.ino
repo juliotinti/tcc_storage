@@ -2,36 +2,26 @@
 #include <PubSubClient.h>
 
 //---------W5500 RELATED---------
-byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};  // MAC address
-IPAddress ip(10, 9, 0, 36);  // IP address that Arduino will assume
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };  // MAC address
+IPAddress ip(10, 9, 0, 36);                           // IP address that Arduino will assume
 EthernetClient ethClient;
 
 //---------MQTT RELATED---------
-const char* mqtt_server = "10.9.0.114"; // MQTT broker/server IP address
+const char* mqtt_server = "10.9.0.114";  // MQTT broker/server IP address
 const char* mqttTopic = "storageInfo";
 const int mqttPort = 1883;
 PubSubClient client(ethClient);
 
 //---------Storage RELATED---------
-int rowNum = 5;
-int collomNum = 5;
-int row1[] = {0, 0, 0, 0, 0};
-int row2[] = {0, 0, 0, 0, 0};
-int row3[] = {0, 0, 0, 0, 0};
-int row4[] = {0, 0, 0, 0, 0};
-int row5[] = {0, 0, 0, 0, 0};
-
-//-------PhysicalTest RELATED-------
-const int switchsPin[] = {36, 37, 38, 39};
-int state[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+const int switchsPin[] = { 36, 37, 38, 39 };
+int state[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 const int switchNum = sizeof(switchsPin) / sizeof(switchsPin[0]);
 
 
-void setup() 
-{
+void setup() {
   Serial.begin(115200);
 
-  // sensors setup 
+  // sensors setup
   // Configures the switch pins as inputs and enables the internal pull-up resistors
   for (int i = 0; i < switchNum; i++) {
     pinMode(switchsPin[i], INPUT_PULLUP);
@@ -44,28 +34,22 @@ void setup()
   client.setServer(mqtt_server, 1883);
 }
 
-void setup_ethernet() 
-{
+void setup_ethernet() {
   Serial.println("Begin Ethernet");
 
-  Ethernet.init(10); 
-  if (Ethernet.begin(mac)) 
-  { // Dynamic IP setup
+  Ethernet.init(10);
+  if (Ethernet.begin(mac)) {  // Dynamic IP setup
     Serial.println("DHCP OK!");
-  } else 
-  {
+  } else {
     Serial.println("Failed to configure Ethernet using DHCP");
     // Check for Ethernet hardware present
-    if (Ethernet.hardwareStatus() == EthernetNoHardware) 
-    {
+    if (Ethernet.hardwareStatus() == EthernetNoHardware) {
       Serial.println("Ethernet shield was not found.  Sorry, can't run without hardware. :(");
-      while (true) 
-      {
-        delay(1); // do nothing, no point running without Ethernet hardware
+      while (true) {
+        delay(1);  // do nothing, no point running without Ethernet hardware
       }
     }
-    if (Ethernet.linkStatus() == LinkOFF) 
-    {
+    if (Ethernet.linkStatus() == LinkOFF) {
       Serial.println("Ethernet cable is not connected.");
     }
   }
@@ -83,21 +67,16 @@ void setup_ethernet()
   Serial.println(Ethernet.dnsServerIP());
 
   Serial.println("Ethernet Successfully Initialized");
-
 }
 
-// function to reconnect to the topic 
-void reconnect() 
-{
-  while (!client.connected()) 
-  {
+// function to reconnect to the topic
+void reconnect() {
+  while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
 
-    if (client.connect("ArduinoClient")) 
-    {
+    if (client.connect("ArduinoClient")) {
       Serial.println("connected");
-    } else
-    {
+    } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
@@ -106,8 +85,7 @@ void reconnect()
   }
 }
 
-String readStorageUsage(int* sensorState, int switchNum) 
-{
+String readStorageUsage(int* sensorState, int switchNum) {
   // mocked storageResponse
   String result = "";
   for (int i = 0; i < switchNum; i++) {
@@ -117,14 +95,15 @@ String readStorageUsage(int* sensorState, int switchNum)
     }
   }
 
+  // REMOVE WHEN PUT ALL SENSORS
+  result += ", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0";
+
   return result;
 }
 
-void loop() 
-{
+void loop() {
 
-  if (!client.connected()) 
-  {
+  if (!client.connected()) {
     reconnect();
   }
 
@@ -146,5 +125,4 @@ void loop()
   client.publish(mqttTopic, result.c_str());
   Serial.println("sent");
   delay(3000);
-
 }
