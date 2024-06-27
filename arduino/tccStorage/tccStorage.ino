@@ -102,7 +102,7 @@ String readStorageUsage(int* sensorState, int switchNum)
   String result = "";
   for (int i = 0; i < switchNum; i++) 
   {
-    result += String(sensors[i]);
+    result += String(sensorState[i]);
     if (i < switchNum - 1) 
     {
       result += ", ";
@@ -145,5 +145,5 @@ void loop()
     Serial.println("sent");
   }
 
-  delay(1500);
+  delay(150);
 }
