@@ -1,62 +1,70 @@
 #include <Ethernet.h>
 #include <PubSubClient.h>
+#include <Keypad_Matrix.h>
 
-//---------W5500 RELATED---------
+//----------------W5500 RELATED----------------
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };  // MAC address
 IPAddress ip(10, 9, 0, 36);                           // IP address that Arduino will assume
 EthernetClient ethClient;
 
-//---------MQTT RELATED---------
+//-----------------MQTT RELATED----------------
 const char* mqtt_server = "10.9.0.114";  // MQTT broker/server IP address
 const char* mqttTopic = "storageInfo";
 const int mqttPort = 1883;
 PubSubClient client(ethClient);
 
-//---------Storage RELATED---------
-const int switchsPin[] = { 36, 37, 38, 39 };
-int state[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-const int switchNum = sizeof(switchsPin) / sizeof(switchsPin[0]);
+//---------------Storage RELATED---------------
+const byte ROWS = 5;
+const byte COLS = 5;
+const byte rowPins[ROWS] = {22, 24, 26, 28, 30}; //connect to the row pinouts of the keypad
+const byte colPins[COLS] = {40, 42, 44, 46, 48}; //connect to the column pinouts of the keypad
+// Create the storage model 
+const char keys[ROWS][COLS] = {
+  {'1', '2', '3', '4', '5'},
+  {'6', '7', '8', '9', 'a'},
+  {'b', 'c', 'd', 'e', 'f'},
+  {'g', 'h', 'i', 'j', 'k'},
+  {'l', 'm', 'n', 'o', 'p'}
+};
+Keypad_Matrix storageModel = Keypad_Matrix(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
+byte keyStates[ROWS * COLS] = {0}; // Array to store the state of each key
+byte previousKeyStates[ROWS * COLS] = {0}; // Array to store the previous state of each key
 
-
-void setup() 
+void setup()
 {
   Serial.begin(115200);
-
-  // sensors setup
-  // Configures the switch pins as inputs and enables the internal pull-up resistors
-  for (int i = 0; i < switchNum; i++) 
-  {
-    pinMode(switchsPin[i], INPUT_PULLUP);
-  }
 
   // ethernet module setup
   setup_ethernet();
 
   // mqtt communication setup
   client.setServer(mqtt_server, 1883);
+
+  //storage setup
+  storageModel.begin();
 }
 
-void setup_ethernet() 
+void setup_ethernet()
 {
   Serial.println("Begin Ethernet");
 
   Ethernet.init(10);
-  if (Ethernet.begin(mac)) 
+  if (Ethernet.begin(mac))
   {  // Dynamic IP setup
     Serial.println("DHCP OK!");
-  } else 
+  } else
   {
     Serial.println("Failed to configure Ethernet using DHCP");
     // Check for Ethernet hardware present
-    if (Ethernet.hardwareStatus() == EthernetNoHardware) 
+    if (Ethernet.hardwareStatus() == EthernetNoHardware)
     {
       Serial.println("Ethernet shield was not found.  Sorry, can't run without hardware. :(");
-      while (true) 
+      while (true)
       {
         delay(1);  // do nothing, no point running without Ethernet hardware
       }
     }
-    if (Ethernet.linkStatus() == LinkOFF) 
+    if (Ethernet.linkStatus() == LinkOFF)
     {
       Serial.println("Ethernet cable is not connected.");
     }
@@ -78,13 +86,13 @@ void setup_ethernet()
 }
 
 // function to reconnect to the topic
-void reconnect() 
+void reconnect()
 {
-  while (!client.connected()) 
+  while (!client.connected())
   {
     Serial.print("Attempting MQTT connection...");
 
-    if (client.connect("ArduinoClient")) 
+    if (client.connect("ArduinoClient"))
     {
       Serial.println("connected");
     } else {
@@ -96,46 +104,51 @@ void reconnect()
   }
 }
 
-String readStorageUsage(int* sensorState, int switchNum) 
+String readStorageUsage()
 {
-  // mocked storageResponse
-  String result = "";
-  for (int i = 0; i < switchNum; i++) 
-  {
-    result += String(sensorState[i]);
-    if (i < switchNum - 1) 
-    {
-      result += ", ";
+  // Check the state of each key and update the array
+  for (int i = 0; i < ROWS; i++) {
+    for (int j = 0; j < COLS; j++) {
+      char key = keys[i][j];
+      if (storageModel.isKeyDown(key)) {
+        keyStates[i * COLS + j] = 1;
+      } else {
+        keyStates[i * COLS + j] = 0;
+      }
     }
   }
 
-  // REMOVE WHEN PUT ALL SENSORS
-  result += ", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0";
-  return result;
+  // Convert the array to a string and return it
+  String keyStateStr = "";
+  for (int i = 0; i < 25; i++) {
+    keyStateStr += String(keyStates[i]);
+    if (i < 24) {
+      keyStateStr += ",";
+    }
+  }
+  return keyStateStr;
 }
 
-void loop() 
-{
+bool stateChanged() {
+  for (int i = 0; i < 25; i++) {
+    if (keyStates[i] != previousKeyStates[i]) {
+      return true;
+    }
+  }
+  return false;
+}
 
-  if (!client.connected()) 
+void loop()
+{
+  storageModel.scan();
+  if (!client.connected())
   {
     reconnect();
   }
 
-  bool stateChanged = false;
-  for (int i = 0; i < switchNum; i++) 
-  {
-    int currentState = digitalRead(switchsPin[i]) == LOW ? 1 : 0;
-    if (currentState != state[i]) 
-    {
-      stateChanged = true;
-    }
-    state[i] = currentState;
-  }
+  String result = readStorageUsage();
 
-  if (stateChanged) 
-  {
-    String result = readStorageUsage(state, switchNum);
+  if (stateChanged()) {
     Serial.print("Message that will go to the topic [ ");
     Serial.print(mqttTopic);
     Serial.print("]: ");
@@ -143,6 +156,11 @@ void loop()
 
     client.publish(mqttTopic, result.c_str());
     Serial.println("sent");
+
+    // Update previousKeyStates to current keyStates
+    for (int i = 0; i < 25; i++) {
+      previousKeyStates[i] = keyStates[i];
+    }
   }
 
   delay(150);
