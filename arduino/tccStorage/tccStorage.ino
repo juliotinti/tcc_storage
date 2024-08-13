@@ -18,7 +18,7 @@ const byte ROWS = 5;
 const byte COLS = 5;
 const byte rowPins[ROWS] = {42, 38, 34, 30, 26}; //connect to the row pinouts of the keypad
 const byte colPins[COLS] = {44, 40, 36, 32, 28}; //connect to the column pinouts of the keypad
-// Create the storage model 
+// Create the storage model
 const char keys[ROWS][COLS] = {
   {'1', '2', '3', '4', '5'},
   {'6', '7', '8', '9', 'a'},
@@ -29,6 +29,11 @@ const char keys[ROWS][COLS] = {
 Keypad_Matrix storageModel = Keypad_Matrix(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 byte keyStates[ROWS * COLS] = {0}; // Array to store the state of each key
 byte previousKeyStates[ROWS * COLS] = {0}; // Array to store the previous state of each key
+
+// Using averaging
+const int numReadings = 5; // Number of readings to average
+int readings[ROWS * COLS][numReadings]; // Array to store the readings
+int currentReadNumber = 0; // Index of the current reading
 
 void setup()
 {
@@ -42,6 +47,13 @@ void setup()
 
   //storage setup
   storageModel.begin();
+
+  // Initialize the readings array
+  for (int i = 0; i < ROWS * COLS; i++) {
+    for (int j = 0; j < numReadings; j++) {
+      readings[i][j] = 0;
+    }
+  }
 }
 
 void setup_ethernet()
@@ -70,7 +82,6 @@ void setup_ethernet()
     }
   }
   delay(5000);
-
 
   // show the Ethernet configs of the arduino
   Serial.print("Local IP : ");
@@ -110,12 +121,23 @@ String readStorageUsage()
   for (int i = 0; i < ROWS; i++) {
     for (int j = 0; j < COLS; j++) {
       char key = keys[i][j];
-      if (storageModel.isKeyDown(key)) {
-        keyStates[i * COLS + j] = 1;
-      } else {
-        keyStates[i * COLS + j] = 0;
-      }
+      int keyIndex = i * COLS + j;
+      readings[keyIndex][currentReadNumber] = storageModel.isKeyDown(key) ? 1 : 0;
     }
+  }
+
+  currentReadNumber++;
+  if (currentReadNumber >= numReadings) {
+    currentReadNumber = 0;
+  }
+
+  // Average the readings and update keyStates
+  for (int i = 0; i < ROWS * COLS; i++) {
+    int sum = 0;
+    for (int j = 0; j < numReadings; j++) {
+      sum += readings[i][j];
+    }
+    keyStates[i] = (sum > numReadings / 2) ? 1 : 0;
   }
 
   // Convert the array to a string and return it
@@ -140,28 +162,28 @@ bool stateChanged() {
 
 void loop()
 {
-  storageModel.scan();
   if (!client.connected())
   {
     reconnect();
   }
+  else {
+    storageModel.scan();
+    String result = readStorageUsage();
+    if (stateChanged()) {
+      Serial.print("Message that will go to the topic [ ");
+      Serial.print(mqttTopic);
+      Serial.print("]: ");
+      Serial.println(result);
 
-  String result = readStorageUsage();
+      client.publish(mqttTopic, result.c_str());
+      Serial.println("sent");
 
-  if (stateChanged()) {
-    Serial.print("Message that will go to the topic [ ");
-    Serial.print(mqttTopic);
-    Serial.print("]: ");
-    Serial.println(result);
-
-    client.publish(mqttTopic, result.c_str());
-    Serial.println("sent");
-
-    // Update previousKeyStates to current keyStates
-    for (int i = 0; i < 25; i++) {
-      previousKeyStates[i] = keyStates[i];
+      // Update previousKeyStates to current keyStates
+      for (int i = 0; i < 25; i++) {
+        previousKeyStates[i] = keyStates[i];
+      }
     }
+  delay(150);
   }
-
   delay(150);
 }
