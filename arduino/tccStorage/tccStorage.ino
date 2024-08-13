@@ -16,8 +16,8 @@ PubSubClient client(ethClient);
 //---------------Storage RELATED---------------
 const byte ROWS = 5;
 const byte COLS = 5;
-const byte rowPins[ROWS] = {22, 24, 26, 28, 30}; //connect to the row pinouts of the keypad
-const byte colPins[COLS] = {40, 42, 44, 46, 48}; //connect to the column pinouts of the keypad
+const byte rowPins[ROWS] = {42, 38, 34, 30, 26}; //connect to the row pinouts of the keypad
+const byte colPins[COLS] = {44, 40, 36, 32, 28}; //connect to the column pinouts of the keypad
 // Create the storage model 
 const char keys[ROWS][COLS] = {
   {'1', '2', '3', '4', '5'},
